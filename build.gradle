@@ -161,7 +161,7 @@ task tarPython(type: Tar, dependsOn: [assemble]) {
 task pythonInstall(dependsOn: [checkPython, tarPython]){
     doLast {
         def installed
-        def installCommand = [checkPython.ext.pip, 'install', tarPython.archivePath, '--force']
+        def installCommand = [checkPython.ext.pip, 'install', tarPython.archivePath, '--force', '--ignore-installed']
         try{
             def process = installCommand.execute()
             process.waitFor()
